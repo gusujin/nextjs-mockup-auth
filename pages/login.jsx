@@ -25,11 +25,7 @@ const LoginPage = () => {
       localStorage.setItem("access_token", access_token);
       localStorage.setItem("refresh_token", refresh_token);
 
-      const profileResponse = await axios.get("/api/my/profile", {
-        headers: {
-          authorization: `Bearer ${access_token}`,
-        },
-      });
+      const profileResponse = await axios.get("/api/my/profile");
       const { profile } = profileResponse.data;
       setProfile(profile);
 

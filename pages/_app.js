@@ -2,6 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { AuthContext } from "../shared/context/Auth";
 import BaseLayout from "../shared/layouts/Base";
+import "../utils/interceptor";
 
 function MyApp({ Component, pageProps }) {
   const [profile, setProfile] = useState(null);
@@ -12,11 +13,7 @@ function MyApp({ Component, pageProps }) {
       const access_token = localStorage.getItem("access_token");
       if (access_token) {
         try {
-          const profileResponse = await axios.get("/api/my/profile", {
-            headers: {
-              authorization: `Bearer ${access_token}`,
-            },
-          });
+          const profileResponse = await axios.get("/api/my/profile");
           const { profile } = profileResponse.data;
           setProfile(profile);
         } catch (e) {

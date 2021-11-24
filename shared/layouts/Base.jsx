@@ -31,6 +31,11 @@ const BaseLayout = ({ children }) => {
               </Link>
             )}
           </li>
+          <li>
+            <Link href="/private-page">
+              <a>Private Page (require login)</a>
+            </Link>
+          </li>
         </ul>
       </div>
       <pre
